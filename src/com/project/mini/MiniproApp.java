@@ -23,7 +23,7 @@ public class MiniproApp {
 
 		// 시작화면
 		System.out.println("##################################");
-		System.out.println("｜        전화번호 관리 프로그램        ｜");
+		System.out.println("#        전화번호 관리 프로그램        #");
 		System.out.println("##################################");
 
 		// Scanner,List 생성
@@ -54,8 +54,8 @@ public class MiniproApp {
 			mList.add(mini);
 
 		}
-
-		while (true) {
+		boolean action = true;
+		while (action) {
 			System.out.println();
 			System.out.println("1.리스트  2.등록  3.삭제  4.검색  5.종료");
 			System.out.println("----------------------------------");
@@ -94,6 +94,7 @@ public class MiniproApp {
 				System.out.println("<3.삭제>");
 				System.out.print(">번호: ");
 				int removeInput = sc.nextInt();
+				sc.nextLine();
 
 				mList.remove(mList.get(removeInput - 1));
 				System.out.println("[삭제되었습니다.]");
@@ -102,7 +103,7 @@ public class MiniproApp {
 			case 4: // 포함된 이름 검색
 				System.out.print(">이름검색:");
 				String search = sc.next();
-
+				
 				for (int i = 0; i < mList.size(); i++) {
 
 					int findName = mList.get(i).getName().indexOf(search);
@@ -116,7 +117,12 @@ public class MiniproApp {
 				break;
 
 			case 5: //종료 (탈출)
-				System.out.println("종료되었습니다");
+				action=false;
+				System.out.println("[종료되었습니다]");
+				break;
+				
+			default://그 외 메뉴 작성시
+				System.out.println("!다시 입력해 주세요!");
 				break;
 				
 			}// ---------switch문 종료-------------------
@@ -132,10 +138,10 @@ public class MiniproApp {
 
 			br.close();
 			bw.close();
-//			sc.close();
+			
 
 		} // -------------while문 종료---------------------
-		
-	
+
+		sc.close();
 	}
 }
